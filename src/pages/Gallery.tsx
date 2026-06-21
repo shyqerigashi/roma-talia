@@ -1,86 +1,38 @@
+import { RESTAURANT } from '@/lib/restaurant';
+
+const GALLERY_IMAGES = [
+  { src: '/gallery/italian-sampler.png', alt: 'Italian sampler with lasagna, chicken parmigiana, and fettuccine alfredo' },
+  { src: '/gallery/mushroom-risotto.png', alt: 'Mushroom risotto with fresh herbs' },
+  { src: '/gallery/handmade-gnocchi.png', alt: 'Handmade gnocchi on parchment' },
+  { src: '/gallery/gnocchi-plated.png', alt: 'Gnocchi in creamy mushroom sauce' },
+  { src: '/gallery/bruschetta-patio.png', alt: 'Bruschetta and Italian dishes on patio' },
+  { src: '/gallery/shrimp-scampi.png', alt: 'Shrimp scampi with risotto' },
+  { src: '/gallery/creme-brulee.png', alt: 'Crème brûlée with fresh berries' },
+];
+
 const Gallery = () => {
-  const galleryImages = [
-    '/gallery/DJI_0119.jpg',
-    '/gallery/DJI_0122.jpg',
-    '/gallery/DJI_0129.jpg',
-    '/gallery/DSC3916.jpg',
-    '/gallery/DSC3928.jpg',
-    '/gallery/DSC3938.jpg',
-    '/gallery/DSC3941.jpg',
-    '/gallery/DSC3992.jpg',
-    '/gallery/DSC3993.jpg',
-    '/gallery/DSC3994.jpg',
-    '/gallery/DSC3998.jpg',
-    '/gallery/DSC4005.jpg',
-    '/gallery/DSC4029.jpg',
-    '/gallery/DSC4036.jpg',
-    '/gallery/DSC4042.jpg',
-    '/gallery/DSC4046.jpg',
-    '/gallery/DSC4053.jpg',
-    '/gallery/DSC4059.jpg',
-    '/gallery/DSC4062.jpg',
-    '/gallery/DSC4066.jpg',
-    '/gallery/DSC4069.jpg',
-    '/gallery/DSC4071.jpg',
-    '/gallery/DSC4075.jpg',
-    '/gallery/DSC4079.jpg',
-    '/gallery/DSC4081-2.jpg',
-    '/gallery/DSC4084.jpg',
-    '/gallery/DSC4086.jpg',
-    '/gallery/DSC4092.jpg',
-    '/gallery/DSC4093.jpg',
-    '/gallery/DSC4097.jpg',
-    '/gallery/DSC4104.jpg',
-    '/gallery/DSC4109.jpg',
-    '/gallery/DSC4111.jpg',
-    '/gallery/DSC4117.jpg',
-    '/gallery/DSC4125.jpg',
-    '/gallery/DSC4153.jpg',
-    '/gallery/DSC4160.jpg',
-    '/gallery/DSC4162.jpg',
-    '/gallery/DSC4168.jpg',
-    '/gallery/DSC4219.jpg',
-    '/gallery/DSC4228.jpg',
-    '/gallery/DSC4234.jpg',
-    '/gallery/DSC4266.jpg',
-    '/gallery/DSC4273.jpg',
-    '/gallery/DSC4282.jpg',
-    '/gallery/DSC4305.jpg',
-    '/gallery/DSC4317.jpg',
-    '/gallery/DSC4330.jpg',
-    '/gallery/DSC4353.jpg',
-    '/gallery/DSC4363.jpg',
-    '/gallery/DSC4366.jpg',
-    '/gallery/DSC4371.jpg',
-  ];
-
-  // Shuffle images for random display order
-  const shuffledImages = [...galleryImages].sort(() => Math.random() - 0.5);
-
   return (
-    <div className="min-h-screen bg-brand-light-cream">
-      {/* Header */}
-      <section className="bg-brand-blue text-white py-20">
+    <div className="min-h-screen bg-brand-light-beige">
+      <section className="bg-brand-primary text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-4">Gallery</h1>
-          <p className="text-xl brand-cream">
+          <p className="text-xl brand-beige">
             A Visual Journey Through Our Culinary Excellence
           </p>
         </div>
       </section>
 
-      {/* Gallery Grid */}
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {shuffledImages.map((image, index) => (
+            {GALLERY_IMAGES.map((image) => (
               <div
-                key={index}
+                key={image.src}
                 className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <img
-                  src={image}
-                  alt={`Casa D'Italia Gallery ${index + 1}`}
+                  src={image.src}
+                  alt={image.alt}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
@@ -90,26 +42,27 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Visit Us CTA */}
-      <section className="py-16 bg-brand-blue text-white">
+      <section className="py-16 bg-brand-primary text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Experience Casa D'Italia</h2>
-          <p className="text-xl mb-8 brand-cream">
+          <h2 className="text-3xl font-bold mb-4">
+            Experience {RESTAURANT.shortName}
+          </h2>
+          <p className="text-xl mb-8 brand-beige">
             Visit us to experience the authentic tastes and warm atmosphere of
             Italy
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+19313787762"
-              className="inline-block bg-brand-cream text-brand-blue px-8 py-3 rounded-lg font-semibold hover:bg-brand-cream/90 transition-colors"
+              href={`tel:${RESTAURANT.phone}`}
+              className="inline-block bg-brand-beige text-brand-primary px-8 py-3 rounded-lg font-semibold hover:bg-brand-beige/90 transition-colors"
             >
               Call for Reservations
             </a>
             <a
-              href="https://www.casaditaliamenu.com/"
+              href={RESTAURANT.orderUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-brand-blue transition-colors"
+              className="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-brand-primary transition-colors"
             >
               Order Online
             </a>

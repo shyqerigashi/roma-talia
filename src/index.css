@@ -3,77 +3,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Roma Italian Restaurant design system */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 207 87% 13%;
+    --foreground: 165 100% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 207 87% 13%;
+    --card-foreground: 165 100% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 207 87% 13%;
+    --popover-foreground: 165 100% 18%;
 
-    --primary: 207 87% 13%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 165 100% 18%;
+    --primary-foreground: 38 48% 90%;
 
-    --secondary: 43 76% 77%;
-    --secondary-foreground: 207 87% 13%;
+    --secondary: 17 77% 47%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 43 20% 96%;
-    --muted-foreground: 207 30% 50%;
+    --muted: 38 30% 96%;
+    --muted-foreground: 165 20% 40%;
 
-    --accent: 43 76% 77%;
-    --accent-foreground: 207 87% 13%;
+    --accent: 17 77% 47%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 43 20% 90%;
-    --input: 43 20% 90%;
-    --ring: 207 87% 13%;
+    --border: 38 25% 88%;
+    --input: 38 25% 88%;
+    --ring: 165 100% 18%;
 
     --radius: 0.5rem;
 
-    /* Brand colors */
-    --brand-blue: 207 87% 13%;
-    --brand-cream: 43 76% 77%;
-    --brand-light-cream: 43 30% 95%;
-    --brand-dark-blue: 206 85% 15%;
+    /* Brand colors: #005d46, #d2501c, #e2d1b4 */
+    --brand-primary: 165 100% 18%;
+    --brand-secondary: 17 77% 47%;
+    --brand-beige: 38 48% 80%;
+    --brand-light-beige: 38 40% 95%;
+    --brand-dark-green: 165 100% 14%;
   }
 
   .dark {
-    --background: 207 87% 13%;
-    --foreground: 0 0% 100%;
+    --background: 165 100% 14%;
+    --foreground: 38 48% 90%;
 
-    --card: 207 87% 13%;
-    --card-foreground: 0 0% 100%;
+    --card: 165 100% 14%;
+    --card-foreground: 38 48% 90%;
 
-    --popover: 207 87% 13%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 165 100% 14%;
+    --popover-foreground: 38 48% 90%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 207 87% 13%;
+    --primary: 38 48% 90%;
+    --primary-foreground: 165 100% 18%;
 
-    --secondary: 43 76% 77%;
-    --secondary-foreground: 207 87% 13%;
+    --secondary: 17 77% 47%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 207 50% 20%;
-    --muted-foreground: 43 30% 70%;
+    --muted: 165 30% 22%;
+    --muted-foreground: 38 30% 70%;
 
-    --accent: 43 76% 77%;
-    --accent-foreground: 207 87% 13%;
+    --accent: 17 77% 47%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 207 50% 25%;
-    --input: 207 50% 25%;
-    --ring: 43 76% 77%;
+    --border: 165 30% 25%;
+    --input: 165 30% 25%;
+    --ring: 38 48% 80%;
   }
 }
 
@@ -89,27 +88,60 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  .brand-primary {
+    color: hsl(var(--brand-primary));
+  }
+
+  .bg-brand-primary {
+    background-color: hsl(var(--brand-primary));
+  }
+
+  .brand-secondary {
+    color: hsl(var(--brand-secondary));
+  }
+
+  .bg-brand-secondary {
+    background-color: hsl(var(--brand-secondary));
+  }
+
+  .brand-beige {
+    color: hsl(var(--brand-beige));
+  }
+
+  .bg-brand-beige {
+    background-color: hsl(var(--brand-beige));
+  }
+
+  .bg-brand-light-beige {
+    background-color: hsl(var(--brand-light-beige));
+  }
+
+  .text-brand-dark-green {
+    color: hsl(var(--brand-dark-green));
+  }
+
+  /* Legacy aliases for gradual migration */
   .brand-blue {
-    color: hsl(var(--brand-blue));
+    color: hsl(var(--brand-primary));
   }
-  
+
   .bg-brand-blue {
-    background-color: hsl(var(--brand-blue));
+    background-color: hsl(var(--brand-primary));
   }
-  
+
   .brand-cream {
-    color: hsl(var(--brand-cream));
+    color: hsl(var(--brand-beige));
   }
-  
+
   .bg-brand-cream {
-    background-color: hsl(var(--brand-cream));
+    background-color: hsl(var(--brand-beige));
   }
-  
+
   .bg-brand-light-cream {
-    background-color: hsl(var(--brand-light-cream));
+    background-color: hsl(var(--brand-light-beige));
   }
-  
+
   .text-brand-dark-blue {
-    color: hsl(var(--brand-dark-blue));
+    color: hsl(var(--brand-dark-green));
   }
 }

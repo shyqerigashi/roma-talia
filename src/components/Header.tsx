@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Facebook, Instagram, ExternalLink, Menu } from 'lucide-react';
-import logo from '../assets/casa-logo.svg';
+import logo from '../assets/roma-logo.png';
+import { RESTAURANT } from '@/lib/restaurant';
 
 const Header = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -13,19 +14,17 @@ const Header = () => {
   };
 
   return (
-    <header className=" shadow-sm sticky top-0 z-50 bg-[#05243e]">
+    <header className="shadow-sm sticky top-0 z-50 bg-brand-primary">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
               src={logo}
-              alt="Casa D'Italia Ristorante"
-              className="h-12 w-auto"
+              alt={RESTAURANT.name}
+              className="h-14 w-auto rounded-md"
             />
           </Link>
 
-          {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
@@ -59,13 +58,11 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* Right side - Desktop: Order Now & Social | Mobile: Hamburger Menu */}
           <div className="flex items-center space-x-4">
-            {/* Desktop - Social Media Links & Order Button */}
             <div className="hidden md:flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <a
-                  href="https://www.facebook.com/profile.php?id=100087160646680"
+                  href={RESTAURANT.social.facebook}
                   className="text-white hover:opacity-70 transition-colors"
                   aria-label="Facebook"
                   target="_blank"
@@ -74,7 +71,7 @@ const Header = () => {
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://www.instagram.com/casa_d.italia/"
+                  href={RESTAURANT.social.instagram}
                   className="text-white hover:opacity-70 transition-colors"
                   aria-label="Instagram"
                   target="_blank"
@@ -86,10 +83,10 @@ const Header = () => {
 
               <Button
                 asChild
-                className="bg-brand-cream hover:bg-white text-brand-blue"
+                className="bg-brand-beige hover:bg-white text-brand-primary"
               >
                 <a
-                  href="https://www.casaditaliamenu.com/"
+                  href={RESTAURANT.orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2"
@@ -100,7 +97,6 @@ const Header = () => {
               </Button>
             </div>
 
-            {/* Mobile - Hamburger Menu */}
             <div className="md:hidden">
               <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger asChild>
@@ -146,14 +142,13 @@ const Header = () => {
                       Contact
                     </Link>
 
-                    {/* Mobile - Order Button */}
                     <div className="pt-4 border-t">
                       <Button
                         asChild
-                        className="bg-brand-blue hover:bg-brand-blue/90 text-white w-full mb-4"
+                        className="bg-brand-primary hover:bg-brand-primary/90 text-white w-full mb-4"
                       >
                         <a
-                          href="https://www.casaditaliamenu.com/"
+                          href={RESTAURANT.orderUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center space-x-2"
@@ -164,10 +159,9 @@ const Header = () => {
                         </a>
                       </Button>
 
-                      {/* Mobile - Social Media */}
                       <div className="flex justify-center space-x-4">
                         <a
-                          href="https://www.facebook.com/profile.php?id=100087160646680"
+                          href={RESTAURANT.social.facebook}
                           className="text-gray-600 hover:text-primary transition-colors"
                           aria-label="Facebook"
                           target="_blank"
@@ -177,7 +171,7 @@ const Header = () => {
                           <Facebook className="w-6 h-6" />
                         </a>
                         <a
-                          href="https://www.instagram.com/casa_d.italia/"
+                          href={RESTAURANT.social.instagram}
                           className="text-gray-600 hover:text-primary transition-colors"
                           aria-label="Instagram"
                           target="_blank"
