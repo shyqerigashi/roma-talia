@@ -144,4 +144,27 @@
   .text-brand-dark-blue {
     color: hsl(var(--brand-dark-green));
   }
+
+  .font-serif {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-ken-burns,
+  .animate-hero-float,
+  .animate-hero-pulse,
+  .animate-hero-border-glow,
+  .animate-bounce {
+    animation: none !important;
+  }
+
+  .animate-hero-fade-up,
+  .animate-hero-scale-in,
+  .animate-hero-line-expand,
+  .animate-hero-corner-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }

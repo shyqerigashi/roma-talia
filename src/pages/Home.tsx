@@ -1,63 +1,25 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Star } from 'lucide-react';
 import { RESTAURANT } from '@/lib/restaurant';
+import HeroSection from '@/components/HeroSection';
 
 const GALLERY_PREVIEW = [
-  '/gallery/italian-sampler.png',
-  '/gallery/mushroom-risotto.png',
-  '/gallery/bruschetta-patio.png',
-  '/gallery/shrimp-scampi.png',
-  '/gallery/creme-brulee.png',
-  '/gallery/handmade-gnocchi.png',
+  { src: '/gallery/italian-sampler.png', alt: 'Italian sampler platter' },
+  { src: '/gallery/mushroom-risotto.png', alt: 'Mushroom risotto' },
+  { src: '/gallery/bruschetta-patio.png', alt: 'Bruschetta on patio' },
+  { src: '/gallery/shrimp-scampi.png', alt: 'Shrimp scampi' },
+  { src: '/gallery/creme-brulee.png', alt: 'Crème brûlée' },
+  { src: '/gallery/handmade-gnocchi.png', alt: 'Handmade gnocchi' },
 ];
 
 const Home = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen">
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-r from-brand-primary/90 to-brand-primary/70">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/lovable-uploads/banner.jpg')",
-          }}
-        />
-        <div className="w-full h-full absolute inset-0 bg-brand-primary opacity-40" />
+      <HeroSection />
 
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            {RESTAURANT.shortName}
-          </h1>
-          <p className="text-2xl md:text-3xl mb-2 brand-beige italic">
-            {RESTAURANT.tagline}
-          </p>
-          <p className="text-xl md:text-2xl mb-8 brand-beige">
-            {RESTAURANT.subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="2xl"
-              className="bg-brand-beige text-brand-primary hover:bg-brand-beige/90"
-              onClick={() => navigate('/menu')}
-            >
-              View Menu
-            </Button>
-            <Button
-              size="2xl"
-              variant="outline"
-              className="border-white text-brand-dark-green hover:bg-white hover:text-brand-primary"
-              onClick={() => window.open(RESTAURANT.orderUrl, '_blank')}
-            >
-              Order Online
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-brand-light-beige">
+      <section id="our-story" className="py-20 bg-brand-light-beige">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -65,18 +27,21 @@ const Home = () => {
                 Our Story
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                At Roma Italian Restaurant, every dish begins with fresh
-                ingredients, time-honored recipes, and a passion for bringing
-                the flavors of Italy to Clarksville. From hand-tossed pasta to
-                slow-simmered sauces, we cook from the heart.
+                Buki Murati came to the U.S. in 2017 and started his journey in
+                a New York City restaurant, learning the craft of authentic
+                Italian cooking. After years of hard work, he opened Roma
+                Italian Restaurant in Clarksville, inspired by the local
+                military community and their deep appreciation for European
+                flavors.
               </p>
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed italic text-brand-primary">
-                {RESTAURANT.tagline} — I came, I saw, I tasted.
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                Since then, Roma Italian Restaurant has been named 2024 Best
+                Italian Restaurant in Montgomery County and will soon be
+                featured on America&apos;s Best Restaurants.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Whether you are joining us for a weekday lunch, a family dinner,
-                or a special celebration, we invite you to slow down, savor
-                each bite, and experience the warmth of Italian hospitality.
+                What started as a dream is now a destination. Welcome to Roma
+                Italian Restaurant where tradition meets heart.
               </p>
               <Button
                 asChild
@@ -91,7 +56,7 @@ const Home = () => {
             <div className="relative flex items-center justify-center">
               <img
                 src="/lovable-uploads/our-story.jpeg"
-                alt={`${RESTAURANT.name} exterior`}
+                alt={`${RESTAURANT.name} interior`}
                 className="rounded-lg shadow-xl max-h-[600px] object-cover"
               />
             </div>
@@ -110,43 +75,32 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-            <div className="space-y-4">
-              <img
-                src={GALLERY_PREVIEW[0]}
-                alt="Italian sampler platter"
-                className="rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-48 object-cover"
-              />
-              <img
-                src={GALLERY_PREVIEW[1]}
-                alt="Mushroom risotto"
-                className="rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-48 object-cover"
-              />
+          {/* Mobile: horizontal swipe gallery */}
+          <div className="md:hidden -mx-4 mb-12">
+            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {GALLERY_PREVIEW.map((image) => (
+                <img
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  className="flex-shrink-0 w-[82vw] max-w-xs snap-center rounded-xl shadow-md aspect-[4/3] object-cover"
+                />
+              ))}
             </div>
-            <div className="space-y-4 mt-8">
+          </div>
+
+          {/* Tablet & desktop: even grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {GALLERY_PREVIEW.map((image, index) => (
               <img
-                src={GALLERY_PREVIEW[2]}
-                alt="Bruschetta on patio"
-                className="rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-48 object-cover"
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                className={`rounded-lg shadow-md hover:shadow-lg transition-shadow w-full aspect-[4/3] object-cover ${
+                  index % 3 === 1 ? 'lg:mt-8' : ''
+                }`}
               />
-              <img
-                src={GALLERY_PREVIEW[3]}
-                alt="Shrimp scampi"
-                className="rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-48 object-cover"
-              />
-            </div>
-            <div className="space-y-4">
-              <img
-                src={GALLERY_PREVIEW[4]}
-                alt="Crème brûlée"
-                className="rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-48 object-cover"
-              />
-              <img
-                src={GALLERY_PREVIEW[5]}
-                alt="Handmade gnocchi"
-                className="rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-48 object-cover"
-              />
-            </div>
+            ))}
           </div>
 
           <div className="text-center">

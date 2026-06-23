@@ -21,25 +21,27 @@ const About = () => {
                 Our Story
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Roma Italian Restaurant brings the timeless flavors of Italy to
-                Clarksville — from charred bruschetta and crispy calamari to
-                hand-tossed pasta, slow-simmered risotto, and classic dolce.
-                Every plate is prepared with care, using fresh ingredients and
-                recipes rooted in tradition.
+                Buki Murati came to the U.S. in 2017 and started his journey in
+                a New York City restaurant, learning the craft of authentic
+                Italian cooking. After years of hard work, he opened Roma
+                Italian Restaurant in Clarksville, inspired by the local
+                military community and their deep appreciation for European
+                flavors.
               </p>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed italic text-brand-primary">
-                {RESTAURANT.tagline} — I came, I saw, I tasted.
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                Since then, Roma Italian Restaurant has been named 2024 Best
+                Italian Restaurant in Montgomery County and will soon be
+                featured on America&apos;s Best Restaurants.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Located just off Tiny Town Road, Roma is a place to gather with
-                family and friends, enjoy attentive service, and savor the kind
-                of Italian cooking that keeps you coming back.
+                What started as a dream is now a destination. Welcome to Roma
+                Italian Restaurant where tradition meets heart.
               </p>
             </div>
             <div className="relative flex items-center justify-center">
               <img
                 src="/lovable-uploads/our-story.jpeg"
-                alt={`${RESTAURANT.name} exterior`}
+                alt={`${RESTAURANT.name} interior`}
                 className="rounded-lg shadow-xl max-h-[600px] object-cover"
               />
             </div>
